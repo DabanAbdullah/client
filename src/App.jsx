@@ -6,6 +6,11 @@ import {
   Register,
   Login,
   Error,
+  AddJob,
+  Stats,
+  AllJobs,
+  Profile,
+  Admin,
 } from "./pages";
 
 const route = createBrowserRouter([
@@ -17,7 +22,30 @@ const route = createBrowserRouter([
       { index: true, element: <Landing /> },
       { path: "register", element: <Register /> },
       { path: "login", Component: Login },
-      { path: "dashboard", Component: DashboardLayout },
+      {
+        path: "dashboard",
+        element: <DashboardLayout />,
+        children: [
+          {
+            index: true,
+            element: <AddJob />,
+          },
+          { path: "stats", element: <Stats /> },
+          {
+            path: "all-jobs",
+            element: <AllJobs />,
+          },
+
+          {
+            path: "profile",
+            element: <Profile />,
+          },
+          {
+            path: "admin",
+            element: <Admin />,
+          },
+        ],
+      },
     ],
   },
 ]);
